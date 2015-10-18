@@ -1,0 +1,19 @@
+App = React.createClass({
+  propTypes: {
+    cards: React.PropTypes.array,
+    selectedId: React.PropTypes.string,
+  },
+
+  render() {
+    console.log('[App] rendering');
+    return (
+      <div className="outer">
+        <div className="logo"></div>
+        <h1 className="title">Cards</h1>
+        <div>
+          <CardItem { ...this.props } />
+        </div>
+      </div>
+    );
+  }
+});
