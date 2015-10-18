@@ -1,11 +1,20 @@
 Meteor.startup(function() {
-  console.log("starting up meteor", store);
-
   React.render(
     <div>
+
       <Provider store={store}>
-        { () => <CardsContainer /> }
+        {() =>
+
+          <Router>
+            <Route path='/' component={App}>
+              <IndexRoute component={CardsList}/>
+              <Route path="cards" component={CardsList}/>
+            </Route>
+          </Router>
+
+        }
       </Provider>
+
       <DebugPanel top right bottom>
         <DevTools store={store} monitor={LogMonitor} />
       </DebugPanel>

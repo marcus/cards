@@ -38,4 +38,3 @@ const finalCreateStore =
 // let createStoreWithMiddleware = applyMiddleware(logger)(createStore);
 // store = createStoreWithMiddleware(rootReducer);
 store = finalCreateStore(rootReducer);
-console.log("Got store?", store);

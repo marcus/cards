@@ -10,7 +10,7 @@ App = React.createClass({
         <div className="logo"></div>
         <h1 className="title">Cards</h1>
         <div>
-          <CardItem { ...this.props } />
+          {this.props.children}
         </div>
       </div>
     );
