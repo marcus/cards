@@ -8,7 +8,8 @@ Meteor.startup(function() {
           <Router>
             <Route path='/' component={App}>
               <IndexRoute component={CardsList}/>
-              <Route path="cards" component={CardsList}/>
+              <Route path='cards' component={CardsList}/>
+              <Route path='create' component={CreateCard} />
             </Route>
           </Router>
 

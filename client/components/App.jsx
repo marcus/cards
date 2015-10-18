@@ -10,6 +10,9 @@ App = React.createClass({
         <div className="logo"></div>
         <h1 className="title">Cards</h1>
         <div>
+          <Link to='create'>
+            Create a Card
+          </Link>
           {this.props.children}
         </div>
       </div>

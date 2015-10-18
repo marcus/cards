@@ -7,6 +7,7 @@ Link = ReactRouter.Link;
 Router = ReactRouter.Router;
 Route = ReactRouter.Route;
 IndexRoute = ReactRouter.IndexRoute;
+Link = ReactRouter.Link;
 Provider = ReactRedux.Provider;
 DevTools = ReactReduxDevTools.DevTools;
 DebugPanel = ReactReduxDevTools.DebugPanel;
