@@ -4,7 +4,7 @@ Meteor.startup(function() {
   React.render(
     <div>
       <Provider store={store}>
-        <CardsContainer />
+        { () => <CardsContainer /> }
       </Provider>
       <DebugPanel top right bottom>
         <DevTools store={store} monitor={LogMonitor} />

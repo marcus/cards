@@ -4,7 +4,6 @@
 
 let CardsContainer = React.createClass({
   componentWillMount() {
-    console.log("surprise");
     this.sub = Meteor.subscribe('cards');
   },
 
@@ -29,5 +28,5 @@ function mapStateToProps(state) {
     selectedId: state.userInterface.selectedId,
   };
 }
-//this.CardsContainer = connect(mapStateToProps)(CardsContainer);
-this.CardsContainer = CardsContainer;
+this.CardsContainer = connect(mapStateToProps)(CardsContainer);
+//this.CardsContainer = CardsContainer;

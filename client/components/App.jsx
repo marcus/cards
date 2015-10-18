@@ -5,7 +5,6 @@ App = React.createClass({
   },
 
   render() {
-    console.log('[App] rendering');
     return (
       <div className="outer">
         <div className="logo"></div>
