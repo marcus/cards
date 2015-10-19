@@ -26,3 +26,6 @@ npm-container
 cosmos:browserify
 skinnygeek1010:flux-helpers
 promise
+twbs:bootstrap
+mediumeditor:mediumeditor
+fortawesome:fontawesome
