@@ -1,9 +1,8 @@
 CardItem = React.createClass({
   render() {
-    console.log("Rendering card item");
     return (
       <div>
-        <h3>{this.props.card.title}</h3>
+        <Link to={`/edit/${this.props.card._id}`}>{this.props.card.title}</Link>
       </div>
     );
   }

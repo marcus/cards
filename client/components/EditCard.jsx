@@ -1,8 +1,8 @@
 EditCard = React.createClass({
   getInitialState() {
-    return ({
-      title: ''
-    });
+    let card = this.props.cards.find((c) => c._id === this.props.params.id) || {};
+    console.log('found anything?', card);
+    return Object.assign({title: 'loading...'}, card);
   },
 
   componentDidMount() {
@@ -23,7 +23,12 @@ EditCard = React.createClass({
     });
   },
 
+  save() {
+    console.log("Saving");
+  },
+
   render() {
+    console.log("Rendering card item", this.props);
     return (
       <div>
         <h3>Edit Card</h3>
@@ -31,7 +36,7 @@ EditCard = React.createClass({
           <Col sm={6}>
             <Input
               type="text"
-              value={this.state.value}
+              value={this.state.title}
               placeholder="Title"
               label="Title"
               bsStyle={this.validationState()}
@@ -46,6 +51,9 @@ EditCard = React.createClass({
           <Col sm={6}>
             Preview
           </Col>
+        </Row>
+        <Row>
+          <Button onClick={this.save()}><i className="fa fa-save" /> Save</Button>
         </Row>
       </div>
     )

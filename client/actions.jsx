@@ -19,6 +19,16 @@ Actions = {
     }
   },
 
+  createCard(card) {
+    let updatedCard = Card.update(card);
+    console.log("Updated a card", card);
+
+    return {
+      type: 'UPDATED_CARD',
+      card: updatedCard,
+    }
+  },
+
   selectCard(cardId) {
     let card = Cards.findOne(cardId);
 

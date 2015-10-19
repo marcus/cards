@@ -12,6 +12,7 @@ Row = Bootstrap.Row;
 Col = Bootstrap.Col;
 Input = Bootstrap.Input;
 Grid = Bootstrap.Grid;
+Button = Bootstrap.Button;
 Link = ReactRouter.Link;
 Provider = ReactRedux.Provider;
 DevTools = ReactReduxDevTools.DevTools;

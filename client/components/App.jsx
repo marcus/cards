@@ -1,6 +1,7 @@
 let App = React.createClass({
   componentWillMount() {
     this.sub = Meteor.subscribe('cards');
+    Card.findAll();
   },
 
   componentWillUnmount() {
@@ -18,7 +19,7 @@ let App = React.createClass({
   },
 
   render() {
-    console.log("App has props", this.props);
+    //console.log("App has props", this.props);
     return (
       <div className="outer">
         <div className="logo"></div>

@@ -9,7 +9,7 @@ Meteor.startup(function() {
             <Route path='/' component={App}>
               <IndexRoute component={CardsList}/>
               <Route path='cards' component={CardsList}/>
-              <Route path='edit' component={EditCard} />
+              <Route path='edit/:id' component={EditCard} />
             </Route>
           </Router>
 
