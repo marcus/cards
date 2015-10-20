@@ -4,6 +4,7 @@ Meteor.startup(function() { // work around files not being defined yet
   if (Meteor.isClient) { // work around not having actions in /both folder
     // trigger action when this changes
     trackCollection(Cards, (data) => {
+      data = data.sort((a, b) => b.created_at - a.created_at);
       store.dispatch(Actions.cardsChanged(data));
     });
 
@@ -12,19 +13,23 @@ Meteor.startup(function() { // work around files not being defined yet
   }
 });
 
-
+let sort = { created_at: -1, title: 1 };
 Card = {
   create(card) {
-    //console.log("INSERTING CARD", card);
      return Cards.insert(card);
   },
-  update() {
-    // Cards.update(...)
+
+  update(card) {
+    return Cards.update(card._id, {
+      $set: card,
+    });
   },
-  destroy() {
-    // Cards.remove(...)
+
+  delete(cardId) {
+    Cards.remove(cardId);
   },
+
   findAll() {
-    return Cards.find({}, { sort: { created_at: -1, title: 1 } }).fetch();
+    return Cards.find({}, { sort: sort }).fetch();
   }
 };

@@ -16,11 +16,12 @@ Meteor.startup(function() {
         }
       </Provider>
 
-      <DebugPanel top right bottom>
-        <DevTools store={store} monitor={LogMonitor} />
-      </DebugPanel>
     </div>,
     //document.getElementById('app')
     document.body
   );
 });
+      //<DebugPanel top right bottom>
+        //<DevTools store={store} monitor={LogMonitor} />
+      //</DebugPanel>
+

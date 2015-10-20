@@ -9,6 +9,7 @@ Actions = {
   createCard(card) {
     card = card || {
       title: 'New Card',
+      created_at: new Date(),
     }
     let createdCard = Card.create(card);
     console.log("Created a card", card);
@@ -19,13 +20,21 @@ Actions = {
     }
   },
 
-  createCard(card) {
+  updateCard(card) {
     let updatedCard = Card.update(card);
-    console.log("Updated a card", card);
 
     return {
-      type: 'UPDATED_CARD',
+      type: 'UPDATE_CARD',
       card: updatedCard,
+    }
+  },
+
+  deleteCard(cardId) {
+    let updatedCard = Card.delete(cardId);
+
+    return {
+      type: 'DELETE_CARD',
+      id: cardId,
     }
   },
 

@@ -1,21 +1,32 @@
 Redux = require("redux");
-ReactRedux = require("react-redux");
-ReduxDevTools = require("redux-devtools");
-ReactReduxDevTools = require("redux-devtools/lib/react");
+
 ReactRouter = require('react-router');
-Bootstrap = require('react-bootstrap');
 Link = ReactRouter.Link;
 Router = ReactRouter.Router;
+Link = ReactRouter.Link;
+History = ReactRouter.History;
 Route = ReactRouter.Route;
 IndexRoute = ReactRouter.IndexRoute;
+
+Bootstrap = require('react-bootstrap');
 Row = Bootstrap.Row;
 Col = Bootstrap.Col;
 Input = Bootstrap.Input;
 Grid = Bootstrap.Grid;
 Button = Bootstrap.Button;
-Link = ReactRouter.Link;
+PageHeader = Bootstrap.PageHeader;
+Nav = Bootstrap.Nav;
+NavItem = Bootstrap.NavItem;
+Navbar = Bootstrap.Navbar;
+NavBrand = Bootstrap.NavBrand;
+CollapsibleNav = Bootstrap.CollapsibleNav;
+
+ReactRedux = require("react-redux");
 Provider = ReactRedux.Provider;
+connect = ReactRedux.connect;
+
+ReduxDevTools = require("redux-devtools");
+ReactReduxDevTools = require("redux-devtools/lib/react");
 DevTools = ReactReduxDevTools.DevTools;
 DebugPanel = ReactReduxDevTools.DebugPanel;
 LogMonitor = ReactReduxDevTools.LogMonitor;
-connect = ReactRedux.connect;

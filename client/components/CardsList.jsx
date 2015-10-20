@@ -1,11 +1,15 @@
 CardsList = React.createClass({
   render() {
-    //console.log("rendering ", this.props.cards.length, "cards");
-    return (
-      <div>
-        <h3>Some Cards</h3>
-        {this.props.cards.map((card) => <CardItem card={card} />)}
-      </div>
-    )
+    if(this.props.cards && this.props.cards.length) {
+      return (
+        <div>
+          {this.props.cards.map((card, i) => <CardItem key={i} card={card} />)}
+        </div>
+      );
+    } else {
+      return (
+        <div>Make some cards!</div>
+      );
+    }
   }
 });
