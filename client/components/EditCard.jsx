@@ -7,30 +7,17 @@ EditCard = React.createClass({
   },
 
   // TODO - when receives props update the view (?) for live editing in multiple browsers
-  componentDidMount() {
-    this.editor = new MediumEditor('#editor', {
-      toolbar: {
-        allowMultiParagraphSelection: true,
-        buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-        //standardizeSelectionStart: false,
-        static: false,
-      },
-      placeholder: {
-        text: ''
-      }
-    });
-    this.editor.subscribe('editableInput', (e) => {
-      this.updated = true;
-      this.handleChange()
-    });
+  editorOptions: {
+    toolbar: {
+      allowMultiParagraphSelection: true,
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+      standardizeSelectionStart: true,
+      static: false,
+    },
+    placeholder: {
+      text: ''
+    }
   },
-
-  componentWillUnmount() {
-    this.editor.destroy();
-  },
-
-  //shouldComponentUpdate(nextProps, nextState) {
-  //},
 
   validationState() {
     let length = this.state.card.title.length;
@@ -42,8 +29,7 @@ EditCard = React.createClass({
   handleChange(event) {
     let card = Object.assign({}, this.state.card);
     card.title = this.refs.title.getValue();
-    //card.text_front = this.refs.text_front.getValue();
-    card.text_front = React.findDOMNode(this.refs.text_front).innerHTML
+    card.text_front = this.refs.text_front.getDOMNode().innerHTML;
     this.setState({card: card});
   },
 
@@ -61,10 +47,6 @@ EditCard = React.createClass({
       store.dispatch(Actions.deleteCard(this.state.card._id));
       this.history.pushState(null, '/');
     }
-  },
-
-  textFrontHtml() {
-    return {__html: this.state.card.text_front};
   },
 
   render() {
@@ -88,11 +70,13 @@ EditCard = React.createClass({
             />
 
             <label htmlFor="editor">Card Text (front)</label>
-            <div
+            <Editor
               ref="text_front"
               id="editor"
-              dangerouslySetInnerHTML={this.textFrontHtml()}
-            ></div>
+              onChange={this.handleChange}
+              text={this.state.card.text_front}
+              options={this.editorOptions}
+            />
 
           </Col>
 

@@ -31,4 +31,4 @@ DevTools = ReactReduxDevTools.DevTools;
 DebugPanel = ReactReduxDevTools.DebugPanel;
 LogMonitor = ReactReduxDevTools.LogMonitor;
 
-Editor = require('react-medium-editor'); // needs react 14
+//MediumEditor = require('react-medium-editor'); // needs react 14

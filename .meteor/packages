@@ -30,3 +30,4 @@ twbs:bootstrap
 mediumeditor:mediumeditor
 fortawesome:fontawesome
 less
+jabbslad:basic-auth

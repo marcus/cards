@@ -188,7 +188,7 @@
           "version": "0.3.2",
           "dependencies": {
             "core-js": {
-              "version": "1.2.1"
+              "version": "1.2.2"
             },
             "loose-envify": {
               "version": "1.1.0",
@@ -223,7 +223,7 @@
           "version": "5.8.25",
           "dependencies": {
             "core-js": {
-              "version": "1.2.1"
+              "version": "1.2.2"
             }
           }
         },
@@ -330,7 +330,7 @@
               "version": "0.3.2",
               "dependencies": {
                 "core-js": {
-                  "version": "1.2.1"
+                  "version": "1.2.2"
                 },
                 "loose-envify": {
                   "version": "1.1.0",
@@ -357,17 +357,6 @@
               }
             }
           }
-        }
-      }
-    },
-    "react-dom": {
-      "version": "0.14.0"
-    },
-    "react-medium-editor": {
-      "version": "1.5.0",
-      "dependencies": {
-        "medium-editor": {
-          "version": "5.9.0"
         }
       }
     },
