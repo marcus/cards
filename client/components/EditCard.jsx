@@ -1,9 +1,20 @@
 EditCard = React.createClass({
   mixins: [ History ],
+
   getInitialState() {
     // TODO - pass card in props;
-    this.card = this.props.cards.find((c) => c._id === this.props.params.id) || {};
-    return {card: Object.assign({title: 'loading...'}, this.card)};
+    return this.getCardFromProps();
+  },
+
+  getCardFromProps() {
+    let card = this.props.cards.find((c) => c._id === this.props.params.id) || {};
+    console.log('found', card);
+    this.card = card || {title: 'Loading...'};
+    return {card: this.card};
+  },
+
+  componentWillReceiveProps() {
+    this.setState({card: this.getCardFromProps()});
   },
 
   // TODO - when receives props update the view (?) for live editing in multiple browsers
@@ -20,7 +31,7 @@ EditCard = React.createClass({
   },
 
   validationState() {
-    let length = this.state.card.title.length;
+    let length = this.state.card.title ? this.state.card.title.length : 0;
     if (length > 1 && length < 75) return 'success';
     else if (length > 75) return 'warning';
     else if (length > 0) return 'error';
@@ -50,7 +61,7 @@ EditCard = React.createClass({
   },
 
   render() {
-    console.log("Rendering card item");
+    console.log("Rendering card item", this.state.card.title);
     return (
       <div>
         <Row>

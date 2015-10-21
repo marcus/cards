@@ -35,7 +35,7 @@ Reducers.userInterface = function userInterface(state, action) {
   }
 }
 
-Reducers.cards = function players(state = [], action) {
+Reducers.cards = function cards(state = [], action) {
   switch (action.type) {
     case 'CARDS_CHANGED':
       // we don't have to merge the single doc that changes since minimongo

@@ -1,9 +1,17 @@
+// look into the stuff this returns.. still need to figure out how
+// stores and reducers work w/ Meteor
 Actions = {
   cardsChanged(newDocs) {
     return {
       type: 'CARDS_CHANGED',
       collection: newDocs
     };
+  },
+
+  getCards() {
+    return {
+      type: 'GET_CARDS',
+    }
   },
 
   createCard(card) {
@@ -38,6 +46,7 @@ Actions = {
     }
   },
 
+  // prob don't need
   selectCard(cardId) {
     let card = Cards.findOne(cardId);
 
