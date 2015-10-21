@@ -20,7 +20,10 @@ Card = {
   },
 
   update(card) {
-    return Cards.update(card._id, {
+    let id = card._id;
+    delete card._id;
+    console.log('updating card', card);
+    return Cards.update(id, {
       $set: card,
     });
   },

@@ -30,3 +30,5 @@ ReactReduxDevTools = require("redux-devtools/lib/react");
 DevTools = ReactReduxDevTools.DevTools;
 DebugPanel = ReactReduxDevTools.DebugPanel;
 LogMonitor = ReactReduxDevTools.LogMonitor;
+
+Editor = require('react-medium-editor'); // needs react 14

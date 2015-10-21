@@ -6,37 +6,53 @@ EditCard = React.createClass({
     return {card: Object.assign({title: 'loading...'}, this.card)};
   },
 
+  // TODO - when receives props update the view (?) for live editing in multiple browsers
   componentDidMount() {
-    let editor = new MediumEditor('#editor', {
+    this.editor = new MediumEditor('#editor', {
       toolbar: {
         allowMultiParagraphSelection: true,
         buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
-        standardizeSelectionStart: false,
+        //standardizeSelectionStart: false,
         static: false,
       },
       placeholder: {
         text: ''
       }
     });
+    this.editor.subscribe('editableInput', (e) => {
+      this.updated = true;
+      this.handleChange()
+    });
   },
+
+  componentWillUnmount() {
+    this.editor.destroy();
+  },
+
+  //shouldComponentUpdate(nextProps, nextState) {
+  //},
 
   validationState() {
     let length = this.state.card.title.length;
-    if (length > 10 && length < 150) return 'success';
-    else if (length > 150) return 'warning';
+    if (length > 1 && length < 75) return 'success';
+    else if (length > 75) return 'warning';
     else if (length > 0) return 'error';
   },
 
   handleChange(event) {
     let card = Object.assign({}, this.state.card);
     card.title = this.refs.title.getValue();
+    //card.text_front = this.refs.text_front.getValue();
+    card.text_front = React.findDOMNode(this.refs.text_front).innerHTML
     this.setState({card: card});
   },
 
   save() {
-    console.log("Saving");
     store.dispatch(Actions.updateCard(
-      Object.assign({}, this.card, {title: this.state.card.title})
+      Object.assign({}, this.card, {
+        title: this.state.card.title,
+        text_front: this.state.card.text_front
+      })
     ));
   },
 
@@ -45,6 +61,10 @@ EditCard = React.createClass({
       store.dispatch(Actions.deleteCard(this.state.card._id));
       this.history.pushState(null, '/');
     }
+  },
+
+  textFrontHtml() {
+    return {__html: this.state.card.text_front};
   },
 
   render() {
@@ -64,10 +84,15 @@ EditCard = React.createClass({
               ref="title"
               groupClassName="group-class"
               labelClassName="label-class"
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+            />
 
             <label htmlFor="editor">Card Text (front)</label>
-            <div id="editor"></div>
+            <div
+              ref="text_front"
+              id="editor"
+              dangerouslySetInnerHTML={this.textFrontHtml()}
+            ></div>
 
           </Col>
 

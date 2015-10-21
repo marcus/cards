@@ -1,4 +1,6 @@
 CardItem = React.createClass({
+  mixins: [ History ],
+
   render() {
     let cardStyle = {
       boxSizing: 'border-box',
@@ -7,14 +9,18 @@ CardItem = React.createClass({
       border: '1px solid #bbb',
       padding: 20,
       width: '30%',
-      margin: '15',
+      margin: '10',
       textAlign: 'center',
-      minHeight: 30
+      minHeight: 30,
+      boxShadow: '1px 1px 0px 0px rgba(0,0,0,0.3)',
+      backgroundColor: 'white',
+      cursor: 'pointer',
+      //fontFamily: '"Slabo", "Source Sans", sans',
     }
     return (
-      <div style={cardStyle}>
-        <Link to={`/edit/${this.props.card._id}`}>{this.props.card.title}</Link>
-        <p>{this.props.card.text_front}</p>
+      <div className='card-home' style={cardStyle} onClick={() => this.history.pushState(null, `/edit/${this.props.card._id}`)}>
+        <p className='card-home-title'>{this.props.card.title}</p>
+        <p className='card-home-text-front'></p>
       </div>
     );
   }
