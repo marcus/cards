@@ -42,7 +42,16 @@ Reducers.cards = function cards(state = [], action) {
       // keeps the entire cache for us. We'll just return the new minimongo state
       // We *could* also return another fetch if sorting wasn't so easy here
       let docs = _.clone(action.collection); // clone to prevent mutating action!!
-      return docs.sort((a,b) => b.title - a.title);
+      //console.log('Returning cards to view from reducer', action.collection);
+      return docs.sort((a, b) => b.created_at - a.created_at);
+
+    case 'UPDATE_CARD':
+      let docs2 = _.clone(state);
+      let i = docs2.findIndex((d) => d._id === action.card._id);
+      //console.log('found the card at ', i)
+      if(i) docs2[i] = action.card;
+      return docs2.sort((a, b) => b.created_at - a.created_at);
+
     default:
       return state;
   }

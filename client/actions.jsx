@@ -8,19 +8,13 @@ Actions = {
     };
   },
 
-  getCards() {
-    return {
-      type: 'GET_CARDS',
-    }
-  },
-
   createCard(card) {
     card = card || {
       title: 'New Card',
       created_at: new Date(),
     }
     let createdCard = Card.create(card);
-    console.log("Created a card", card);
+    //console.log("Created a card", card);
 
     return {
       type: 'CREATE_CARD',
@@ -29,8 +23,8 @@ Actions = {
   },
 
   updateCard(card) {
-    let updatedCard = Card.update(card);
-
+    let updatedCardId = Card.update(card);
+    let updatedCard = Card.findOne(card._id)
     return {
       type: 'UPDATE_CARD',
       card: updatedCard,
