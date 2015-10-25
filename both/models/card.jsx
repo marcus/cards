@@ -16,6 +16,17 @@ Meteor.startup(function() { // work around files not being defined yet
 
 let sort = { created_at: -1, title: 1 };
 Card = {
+  publicFields: {
+    title: 1,
+    text_front: 1,
+    notes: 1,
+    image_front: 1,
+
+    text_back: 1,
+    references_back: 1,
+    image_back: 1,
+  },
+
   create(card) {
      return Cards.insert(card);
   },

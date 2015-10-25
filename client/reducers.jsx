@@ -20,21 +20,6 @@ function merge(oldState, newState) {
 // these reducers *must* be pure to use time-travel dev-tools
 // never directly mutate the `state` param, use merge instead
 
-Reducers.userInterface = function userInterface(state, action) {
-  state = state || initialInterfaceState;
-
-  switch (action.type) {
-    case 'SELECT_CARD':
-      // we happen to be replacing all the reducers state but with merge you
-      // could just return the selectedId and it would retain selectedPlayerName
-      return merge(state, {
-        selectedId: action.cardId,
-      });
-    default:
-      return state;
-  }
-}
-
 Reducers.cards = function cards(state = [], action) {
   switch (action.type) {
     case 'CARDS_CHANGED':
@@ -56,3 +41,19 @@ Reducers.cards = function cards(state = [], action) {
       return state;
   }
 }
+
+//Reducers.userInterface = function userInterface(state, action) {
+  //state = state || initialInterfaceState;
+
+  //switch (action.type) {
+    //case 'SELECT_CARD':
+      //// we happen to be replacing all the reducers state but with merge you
+      //// could just return the selectedId and it would retain selectedPlayerName
+      //return merge(state, {
+        //selectedId: action.cardId,
+      //});
+    //default:
+      //return state;
+  //}
+//}
+

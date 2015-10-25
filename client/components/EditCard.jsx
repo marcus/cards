@@ -1,20 +1,34 @@
 EditCard = React.createClass({
   mixins: [ History ],
 
+  // TODO - pass card in props;
   getInitialState() {
-    // TODO - pass card in props;
-    return this.getCardFromProps(this.props);
+    return ({
+      card: {}
+    });
   },
 
   getCardFromProps(props) {
     let card = props.cards.find((c) => c._id === this.props.params.id) || {};
-    //console.log('getCardFromProps found', !!card);
     this.card = card || {title: 'Loading...'};
-    return {card: this.card};
+    return this.card;
+  },
+
+  componentWillMount() {
+    this.setState({card: this.getCardFromProps(this.props)});
+    //this.autoSaveInterval = setInterval(this.save, 1000);
+  },
+
+  componentWillUnmount() {
+    clearInterval(this.autoSaveInterval);
+  },
+
+  shouldComponentUpdate(nextProps) {
+    return !_.isEqual(this.state.card, this.getCardFromProps(nextProps));
   },
 
   componentWillReceiveProps(nextProps) {
-    this.setState(this.getCardFromProps(nextProps));
+    this.setState({card: this.getCardFromProps(nextProps)});
   },
 
   // TODO - when receives props update the view (?) for live editing in multiple browsers

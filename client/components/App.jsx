@@ -55,7 +55,7 @@ let App = React.createClass({
 function mapStateToProps(state) {
   return {
     cards: state.cards,
-    selectedId: state.userInterface.selectedId,
+    //selectedId: state.userInterface.selectedId,
   };
 }
 this.App = connect(mapStateToProps)(App);
