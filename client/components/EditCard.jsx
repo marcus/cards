@@ -55,15 +55,18 @@ EditCard = React.createClass({
     let card = Object.assign({}, this.state.card);
     card.title = this.refs.title.getValue();
     card.text_front = this.refs.text_front.getDOMNode().innerHTML;
+
+    card.title_back = this.refs.title_back.getValue();
+    card.text_back = this.refs.text_back.getDOMNode().innerHTML;
+
+    card.activity = this.refs.activity.getDOMNode().innerHTML;
+    card.references = this.refs.references.getDOMNode().innerHTML;
     this.setState({card: card});
   },
 
   save() {
     store.dispatch(Actions.updateCard(
-      Object.assign({}, this.card, {
-        title: this.state.card.title,
-        text_front: this.state.card.text_front
-      })
+      Object.assign({}, this.card, this.state.card)
     ));
   },
 
@@ -75,12 +78,13 @@ EditCard = React.createClass({
   },
 
   render() {
-    //console.log("Rendering card item", this.state.card.title);
+    //console.log("Rendering card item", this.state.card);
+    console.log("UPDATED", this.state.card.updated_at);
     return (
       <div>
         <Row>
           <Col sm={6}>
-            <h4>Edit</h4>
+            <h3>Front</h3>
             <Input
               type="text"
               value={this.state.card.title}
@@ -94,12 +98,55 @@ EditCard = React.createClass({
               onChange={this.handleChange}
             />
 
-            <label htmlFor="editor">Card Text (front)</label>
+            <label htmlFor="text_front">Card Text (front)</label>
             <Editor
               ref="text_front"
-              id="editor"
+              id="text_front"
               onChange={this.handleChange}
               text={this.state.card.text_front}
+              options={this.editorOptions}
+            />
+
+            <Button onClick={this.save} bsStyle="primary"><i className='fa fa-save' /> Save</Button>
+
+            <h3>Back</h3>
+            <Input
+              type="text"
+              value={this.state.card.title_back}
+              placeholder="Title (back)"
+              label="Title - Back"
+              bsStyle={this.validationState()}
+              hasFeedback
+              ref="title_back"
+              groupClassName="group-class"
+              labelClassName="label-class"
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="text_back">Card Text (back)</label>
+            <Editor
+              ref="text_back"
+              id="text_back"
+              onChange={this.handleChange}
+              text={this.state.card.text_back}
+              options={this.editorOptions}
+            />
+
+            <label htmlFor="activity">Activity</label>
+            <Editor
+              ref="activity"
+              id="activity"
+              onChange={this.handleChange}
+              text={this.state.card.activity}
+              options={this.editorOptions}
+            />
+
+            <label htmlFor="references">References</label>
+            <Editor
+              ref="references"
+              id="references"
+              onChange={this.handleChange}
+              text={this.state.card.references}
               options={this.editorOptions}
             />
 
@@ -107,6 +154,7 @@ EditCard = React.createClass({
 
           <Col sm={6}>
             <h4>Preview</h4>
+            <p>Last Updated {moment(this.state.card.updated_at).format('MMMM Do YYYY, h:mm a')}</p>
             <CardPreview card={this.state.card} />
           </Col>
 

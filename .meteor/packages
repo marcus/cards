@@ -32,3 +32,4 @@ fortawesome:fontawesome
 less
 jabbslad:basic-auth
 dataflows:immutable
+momentjs:moment
