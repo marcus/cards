@@ -20,6 +20,17 @@ let App = React.createClass({
     store.dispatch(Actions.createCard());
   },
 
+  exportCards(event) {
+    event.stopPropagation();
+    let file = `cards-${moment().format('MM-DD-YYYY')}.csv`;
+    Meteor.call('exportCSV', function(err, fileContent) {
+      if(fileContent){
+        var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, file);
+      }
+    });
+  },
+
   render() {
     //console.log("App has props", this.props);
     return (
@@ -35,7 +46,11 @@ let App = React.createClass({
             <CollapsibleNav eventKey={0}>
 
               <Nav navbar right>
-                <NavItem eventKey={1} href='#' onClick={this.createCard}>
+                <NavItem eventKey={1} href='#' onClick={this.exportCards}>
+                  <i className='fa fa-download' style={{marginRight: 5}} />
+                  Export Cards to Excel
+                </NavItem>
+                <NavItem eventKey={2} href='#' onClick={this.createCard}>
                   <i className='fa fa-plus' style={{marginRight: 5}} />
                   Create a Card
                 </NavItem>

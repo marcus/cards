@@ -79,7 +79,6 @@ EditCard = React.createClass({
 
   render() {
     //console.log("Rendering card item", this.state.card);
-    console.log("UPDATED", this.state.card.updated_at);
     return (
       <div>
         <Row>
@@ -115,7 +114,6 @@ EditCard = React.createClass({
               value={this.state.card.title_back}
               placeholder="Title (back)"
               label="Title - Back"
-              bsStyle={this.validationState()}
               hasFeedback
               ref="title_back"
               groupClassName="group-class"
@@ -155,7 +153,8 @@ EditCard = React.createClass({
           <Col sm={6}>
             <h4>Preview</h4>
             <p>Last Updated {moment(this.state.card.updated_at).format('MMMM Do YYYY, h:mm a')}</p>
-            <CardPreview card={this.state.card} />
+            <p>Preview coming soon</p>
+            {/*<CardPreview card={this.state.card} />*/}
           </Col>
 
         </Row>
