@@ -28,6 +28,8 @@ Card = {
     activity: 1,
     image_back: 1,
 
+    notes: 1,
+
     created_at: 1,
     updated_at: 1,
   },

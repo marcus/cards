@@ -15,6 +15,7 @@ EditCard = React.createClass({
   },
 
   componentWillMount() {
+    console.log("mount setting state");
     this.setState({card: this.getCardFromProps(this.props)});
     //this.autoSaveInterval = setInterval(this.save, 1000);
   },
@@ -28,6 +29,7 @@ EditCard = React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
+    console.log("Setting card from props", nextProps);
     this.setState({card: this.getCardFromProps(nextProps)});
   },
 
@@ -35,7 +37,7 @@ EditCard = React.createClass({
   editorOptions: {
     toolbar: {
       allowMultiParagraphSelection: true,
-      buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'],
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote', 'orderedlist', 'unorderedlist', 'indent', 'outdent'],
       standardizeSelectionStart: true,
       static: false,
     },
@@ -45,10 +47,11 @@ EditCard = React.createClass({
   },
 
   validationState() {
-    let length = this.state.card.title ? this.state.card.title.length : 0;
-    if (length > 1 && length < 75) return 'success';
-    else if (length > 75) return 'warning';
-    else if (length > 0) return 'error';
+    return 'success';
+    //let length = this.state.card.title ? this.state.card.title.length : 0;
+    //if (length > 1 && length < 75) return 'success';
+    //else if (length > 75) return 'warning';
+    //else if (length > 0) return 'error';
   },
 
   handleChange(event) {
@@ -61,6 +64,7 @@ EditCard = React.createClass({
 
     card.activity = this.refs.activity.getDOMNode().innerHTML;
     card.references = this.refs.references.getDOMNode().innerHTML;
+    card.notes = this.refs.notes.getDOMNode().innerHTML;
     this.setState({card: card});
   },
 
@@ -83,7 +87,6 @@ EditCard = React.createClass({
       <div>
         <Row>
           <Col sm={6}>
-            <h3>Front</h3>
             <Input
               type="text"
               value={this.state.card.title}
@@ -143,6 +146,15 @@ EditCard = React.createClass({
             <Editor
               ref="references"
               id="references"
+              onChange={this.handleChange}
+              text={this.state.card.references}
+              options={this.editorOptions}
+            />
+
+            <label htmlFor="notes">Notes (not shown on card)</label>
+            <Editor
+              ref="notes"
+              id="notes"
               onChange={this.handleChange}
               text={this.state.card.references}
               options={this.editorOptions}
