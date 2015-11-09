@@ -24,9 +24,9 @@ EditCard = React.createClass({
     clearInterval(this.autoSaveInterval);
   },
 
-  shouldComponentUpdate(nextProps) {
-    return !_.isEqual(this.state.card, this.getCardFromProps(nextProps));
-  },
+  //shouldComponentUpdate(nextProps) {
+    //return !_.isEqual(this.state.card, this.getCardFromProps(nextProps));
+  //},
 
   componentWillReceiveProps(nextProps) {
     console.log("Setting card from props", nextProps);
