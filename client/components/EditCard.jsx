@@ -47,11 +47,10 @@ EditCard = React.createClass({
   },
 
   validationState() {
-    return 'success';
-    //let length = this.state.card.title ? this.state.card.title.length : 0;
-    //if (length > 1 && length < 75) return 'success';
-    //else if (length > 75) return 'warning';
-    //else if (length > 0) return 'error';
+    let length = this.state.card.title ? this.state.card.title.length : 0;
+    if (length > 1 && length < 75) return 'success';
+    else if (length > 75) return 'warning';
+    else if (length > 0) return 'error';
   },
 
   handleChange(event) {
@@ -156,7 +155,7 @@ EditCard = React.createClass({
               ref="notes"
               id="notes"
               onChange={this.handleChange}
-              text={this.state.card.references}
+              text={this.state.card.notes}
               options={this.editorOptions}
             />
 
