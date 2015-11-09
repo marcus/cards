@@ -68,7 +68,7 @@ EditCard = React.createClass({
   },
 
   save(event) {
-    event.stopPropagation();
+    event.preventDefault();
     store.dispatch(Actions.updateCard(
       Object.assign({}, this.card, this.state.card)
     ));
