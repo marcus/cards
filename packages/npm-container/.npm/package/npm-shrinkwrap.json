@@ -188,7 +188,7 @@
           "version": "0.3.2",
           "dependencies": {
             "core-js": {
-              "version": "1.2.5"
+              "version": "1.2.6"
             },
             "loose-envify": {
               "version": "1.1.0",
@@ -217,13 +217,13 @@
       }
     },
     "react-bootstrap": {
-      "version": "0.26.2",
+      "version": "0.27.3",
       "dependencies": {
         "babel-runtime": {
           "version": "5.8.29",
           "dependencies": {
             "core-js": {
-              "version": "1.2.5"
+              "version": "1.2.6"
             }
           }
         },
@@ -240,41 +240,10 @@
           "version": "3.10.1"
         },
         "react-overlays": {
-          "version": "0.4.4",
+          "version": "0.5.1",
           "dependencies": {
             "react-prop-types": {
               "version": "0.2.2"
-            },
-            "warning": {
-              "version": "2.1.0",
-              "dependencies": {
-                "loose-envify": {
-                  "version": "1.1.0",
-                  "dependencies": {
-                    "js-tokens": {
-                      "version": "1.0.2"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "react-prop-types": {
-          "version": "0.3.0",
-          "dependencies": {
-            "warning": {
-              "version": "2.1.0",
-              "dependencies": {
-                "loose-envify": {
-                  "version": "1.1.0",
-                  "dependencies": {
-                    "js-tokens": {
-                      "version": "1.0.2"
-                    }
-                  }
-                }
-              }
             }
           }
         },
@@ -293,6 +262,49 @@
                   }
                 }
               }
+            }
+          }
+        },
+        "react-prop-types": {
+          "version": "0.3.0"
+        },
+        "warning": {
+          "version": "2.1.0",
+          "dependencies": {
+            "loose-envify": {
+              "version": "1.1.0",
+              "dependencies": {
+                "js-tokens": {
+                  "version": "1.0.2"
+                }
+              }
+            }
+          }
+        },
+        "react-dom": {
+          "version": "0.14.2"
+        },
+        "history": {
+          "version": "1.12.6",
+          "dependencies": {
+            "deep-equal": {
+              "version": "1.0.1"
+            },
+            "invariant": {
+              "version": "2.1.1",
+              "dependencies": {
+                "loose-envify": {
+                  "version": "1.1.0",
+                  "dependencies": {
+                    "js-tokens": {
+                      "version": "1.0.2"
+                    }
+                  }
+                }
+              }
+            },
+            "qs": {
+              "version": "4.0.0"
             }
           }
         },
@@ -330,7 +342,7 @@
               "version": "0.3.2",
               "dependencies": {
                 "core-js": {
-                  "version": "1.2.5"
+                  "version": "1.2.6"
                 },
                 "loose-envify": {
                   "version": "1.1.0",
@@ -359,6 +371,9 @@
           }
         }
       }
+    },
+    "react-dom": {
+      "version": "0.14.2"
     },
     "react-redux": {
       "version": "0.9.0",

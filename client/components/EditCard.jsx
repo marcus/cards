@@ -55,10 +55,10 @@ EditCard = React.createClass({
 
   handleChange(event) {
     let card = Object.assign({}, this.state.card);
-    card.title = this.refs.title.getValue();
+    card.title = this.refs.title.refs.input.getDOMNode().value;
     card.text_front = this.refs.text_front.getDOMNode().innerHTML;
 
-    card.title_back = this.refs.title_back.getValue();
+    card.title_back = this.refs.title_back.refs.input.getDOMNode().value;
     card.text_back = this.refs.text_back.getDOMNode().innerHTML;
 
     card.activity = this.refs.activity.getDOMNode().innerHTML;
