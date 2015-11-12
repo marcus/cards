@@ -24,11 +24,12 @@ let App = React.createClass({
     event.stopPropagation();
     let file = `cards-${moment().format('MM-DD-YYYY')}.csv`;
     Meteor.call('exportCSV', function(err, fileContent) {
-      if(fileContent){
+      if(err) {
+        console.log('err', err);
+        alert(JSON.stringify(err));
+      } else if(fileContent){
         var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
         saveAs(blob, file);
-      } else {
-        alert("Could not export", err);
       }
     });
   },

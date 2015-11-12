@@ -142,7 +142,7 @@ EditCard = React.createClass({
               options={this.editorOptions}
             />
 
-            <label htmlFor="references">References</label>
+            <label htmlFor="references">Resources</label>
             <Editor
               ref="references"
               id="references"
