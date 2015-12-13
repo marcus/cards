@@ -4,7 +4,8 @@ EditCard = React.createClass({
   // TODO - pass card in props;
   getInitialState() {
     return ({
-      card: {}
+      card: {},
+      preview: false,
     });
   },
 
@@ -81,12 +82,23 @@ EditCard = React.createClass({
     }
   },
 
+  preview() {
+    return (
+      <Col sm={6}>
+        <h4>Preview</h4>
+        <p>Last Updated {moment(this.state.card.updated_at).format('MMMM Do YYYY, h:mm a')}</p>
+        <p>Preview coming soon</p>
+        {<CardPreview card={this.state.card} />}
+      </Col>
+    );
+  },
+
   render() {
     //console.log("Rendering card item", this.state.card);
     return (
       <div>
         <Row>
-          <Col sm={6}>
+          <Col sm={this.state.preview ? 6 : 12}>
             <Input
               type="text"
               value={this.state.card.title}
@@ -161,13 +173,7 @@ EditCard = React.createClass({
             />
 
           </Col>
-
-          <Col sm={6}>
-            <h4>Preview</h4>
-            <p>Last Updated {moment(this.state.card.updated_at).format('MMMM Do YYYY, h:mm a')}</p>
-            <p>Preview coming soon</p>
-            {/*<CardPreview card={this.state.card} />*/}
-          </Col>
+          { this.state.preview ? this.preview() : null }
 
         </Row>
         <Row>
