@@ -71,69 +71,66 @@ CardPreview = React.createClass({
           >
         </div>
       );
+    }
 
-      if(card.text_back) {
-        let x = () => {return {__html: this.props.card.text_back}};
-        this.text_back = (
-          <div
-            dangerouslySetInnerHTML={x()}
-            style={{
-              zIndex: 3,
-              //position: 'absolute',
-              //top: 10,
-              //left: 25,
-              width: 320,
-              fontSize: 14,
-              fontFamily: 'Lato',
-              float: 'left',
-            }}
-            >
-          </div>
-        );
-      }
+    if(card.text_back) {
+      let x = () => {return {__html: this.props.card.text_back}};
+      this.text_back = (
+        <div
+          dangerouslySetInnerHTML={x()}
+          style={{
+            zIndex: 3,
+            width: 320,
+            fontSize: 14,
+            fontFamily: 'Lato',
+            float: 'left',
+          }}
+          >
+        </div>
+      );
+    }
 
-      if(card.activity) {
-        let x = () => {return {__html: this.props.card.activity}};
-        this.activity = (
-          <div
-            dangerouslySetInnerHTML={x()}
-            style={{
-              zIndex: 3,
-              //position: 'absolute',
-              //top: 10,
-              //left: 25,
-              width: 320,
-              fontSize: 14,
-              fontFamily: 'Lato',
-              float: 'left',
-            }}
-            >
-          </div>
-        );
-      }
+    if(card.activity) {
+      let x = () => {return {__html: this.props.card.activity}};
+      this.activity = (
+        <div
+          dangerouslySetInnerHTML={x()}
+          style={{
+            zIndex: 3,
+            //position: 'absolute',
+            //top: 10,
+            //left: 25,
+            width: 320,
+            fontSize: 14,
+            fontFamily: 'Lato',
+            float: 'left',
+          }}
+          >
+        </div>
+      );
+    }
 
 
-      if(card.references) {
-        let x = () => {return {__html: this.props.card.references}};
-        this.references = (
-          <div
-            dangerouslySetInnerHTML={x()}
-            style={{
-              zIndex: 3,
-              //position: 'absolute',
-              //top: 10,
-              //left: 25,
-              width: 750,
-              fontSize: 14,
-              fontFamily: 'Lato',
-              float: 'left',
-            }}
-            >
-          </div>
-        );
-      }
+    if(card.references) {
+      let x = () => {return {__html: this.props.card.references}};
+      this.references = (
+        <div
+          dangerouslySetInnerHTML={x()}
+          style={{
+            zIndex: 3,
+            //position: 'absolute',
+            //top: 10,
+            //left: 25,
+            width: 750,
+            fontSize: 14,
+            fontFamily: 'Lato',
+            float: 'left',
+          }}
+          >
+        </div>
+      );
+    }
 
-    };
   },
 
   shouldComponentUpdate(nextProps) {
