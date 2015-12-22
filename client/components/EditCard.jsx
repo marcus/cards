@@ -5,7 +5,7 @@ EditCard = React.createClass({
   getInitialState() {
     return ({
       card: {},
-      preview: false,
+      preview: true,
     });
   },
 
@@ -16,7 +16,6 @@ EditCard = React.createClass({
   },
 
   componentWillMount() {
-    console.log("mount setting state");
     this.setState({card: this.getCardFromProps(this.props)});
     //this.autoSaveInterval = setInterval(this.save, 1000);
   },
@@ -30,7 +29,7 @@ EditCard = React.createClass({
   //},
 
   componentWillReceiveProps(nextProps) {
-    console.log("Setting card from props", nextProps);
+    //console.log("Setting card from props", nextProps);
     this.setState({card: this.getCardFromProps(nextProps)});
   },
 
@@ -82,12 +81,15 @@ EditCard = React.createClass({
     }
   },
 
+  togglePreview() {
+    this.setState({preview: !this.state.preview});
+  },
+
   preview() {
     return (
-      <Col sm={6}>
+      <Col sm={7}>
         <h4>Preview</h4>
         <p>Last Updated {moment(this.state.card.updated_at).format('MMMM Do YYYY, h:mm a')}</p>
-        <p>Preview coming soon</p>
         {<CardPreview card={this.state.card} />}
       </Col>
     );
@@ -98,7 +100,13 @@ EditCard = React.createClass({
     return (
       <div>
         <Row>
-          <Col sm={this.state.preview ? 6 : 12}>
+          <Col sm={this.state.preview ? 5 : 12}>
+            <Input
+              label={`Preview ${this.state.preview ? 'visible' : 'hidden'}`}
+              type="checkbox"
+              checked={this.state.preview}
+              onChange={this.togglePreview}
+            />
             <Input
               type="text"
               value={this.state.card.title}
@@ -174,7 +182,6 @@ EditCard = React.createClass({
 
           </Col>
           { this.state.preview ? this.preview() : null }
-
         </Row>
         <Row>
           <Col sm={6}>

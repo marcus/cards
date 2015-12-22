@@ -40,7 +40,7 @@ let App = React.createClass({
       <div className="outer">
         <Grid fluid={true}>
 
-          <Navbar toggleNavKey={0}>
+          <Navbar fluid={true} toggleNavKey={0}>
             <NavBrand onClick={() => this.history.pushState(null, '/')} style={{cursor: 'pointer'}}>
               <i className='fa fa-wrench' style={{marginRight: 5}} />
               Card Creator
@@ -62,7 +62,7 @@ let App = React.createClass({
             </CollapsibleNav>
           </Navbar>
         </Grid>
-        <Grid>
+        <Grid fluid={true}>
           {React.cloneElement(this.props.children, this.props)}
         </Grid>
       </div>

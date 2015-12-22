@@ -34,3 +34,4 @@ jabbslad:basic-auth
 dataflows:immutable
 momentjs:moment
 lfergon:exportcsv
+ryanswapp:fabricjs

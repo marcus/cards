@@ -20,6 +20,7 @@ NavItem = Bootstrap.NavItem;
 Navbar = Bootstrap.Navbar;
 NavBrand = Bootstrap.NavBrand;
 CollapsibleNav = Bootstrap.CollapsibleNav;
+//fabric = require('fabric');
 
 ReactRedux = require("react-redux");
 Provider = ReactRedux.Provider;
