@@ -55,15 +55,15 @@ EditCard = React.createClass({
 
   handleChange(event) {
     let card = Object.assign({}, this.state.card);
-    card.title = this.refs.title.refs.input.getDOMNode().value;
-    card.text_front = this.refs.text_front.getDOMNode().innerHTML;
+    card.title = this.refs.title.refs.input.value;
+    card.text_front = this.refs.text_front.medium.elements[0].innerHTML;
 
-    card.title_back = this.refs.title_back.refs.input.getDOMNode().value;
-    card.text_back = this.refs.text_back.getDOMNode().innerHTML;
+    card.title_back = this.refs.title_back.refs.input.value;
+    card.text_back = this.refs.text_back.medium.elements[0].innerHTML;
 
-    card.activity = this.refs.activity.getDOMNode().innerHTML;
-    card.references = this.refs.references.getDOMNode().innerHTML;
-    card.notes = this.refs.notes.getDOMNode().innerHTML;
+    card.activity = this.refs.activity.medium.elements[0].innerHTML;
+    card.references = this.refs.references.medium.elements[0].innerHTML;
+    card.notes = this.refs.notes.medium.elements[0].innerHTML;
     this.setState({card: card});
   },
 
@@ -77,7 +77,7 @@ EditCard = React.createClass({
   delete() {
     if(confirm('U sure bro? It\'s not coming back.')) {
       store.dispatch(Actions.deleteCard(this.state.card._id));
-      this.history.pushState(null, '/');
+      store.dispatch(pushPath('/'));
     }
   },
 

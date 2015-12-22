@@ -40,15 +40,16 @@ let App = React.createClass({
       <div className="outer">
         <Grid fluid={true}>
 
-          <Navbar fluid={true} toggleNavKey={0}>
-            <NavBrand onClick={() => this.history.pushState(null, '/')} style={{cursor: 'pointer'}}>
-              <i className='fa fa-wrench' style={{marginRight: 5}} />
-              Card Creator
-            </NavBrand>
-
-            <CollapsibleNav eventKey={0}>
-
-              <Nav navbar right>
+          <Navbar fluid={true}>
+            <Navbar.Header>
+              <NavbarBrand onClick={() => store.dispatch(pushPath('/'))} style={{cursor: 'pointer'}}>
+                <i className='fa fa-wrench' style={{marginRight: 5}} />
+                Card Creator
+              </NavbarBrand>
+            </Navbar.Header>
+            <Navbar.Toggle />
+            <Navbar.Collapse>
+              <Nav navbar pullRight>
                 <NavItem eventKey={1} href='#' onClick={this.exportCards}>
                   <i className='fa fa-download' style={{marginRight: 5}} />
                   Export {this.props.cards.length} Cards to Excel
@@ -58,8 +59,7 @@ let App = React.createClass({
                   Create a Card
                 </NavItem>
               </Nav>
-
-            </CollapsibleNav>
+            </Navbar.Collapse>
           </Navbar>
         </Grid>
         <Grid fluid={true}>
