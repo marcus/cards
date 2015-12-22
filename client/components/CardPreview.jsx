@@ -17,19 +17,10 @@ CardPreview = React.createClass({
     let canvas = this.getCanvas();
 
     if(card.title) {
-      //let title = new fabric.Text(card.title, {
-        //fontFamily: 'Helvetica',
-        //fontSize: 18,
-        //top: 20,
-        //left: 20,
-      //});
-      //canvas.add(title);
       let x = () => {return {__html: this.props.card.title}};
       this.title = (
         <div
           dangerouslySetInnerHTML={x()}
-          className='text_front'
-          id="text_front"
           style={{
             zIndex: 3,
             position: 'absolute',
@@ -49,8 +40,6 @@ CardPreview = React.createClass({
       this.text_front = (
         <div
           dangerouslySetInnerHTML={x()}
-          className='text_front'
-          id="text_front"
           style={{
             zIndex: 2,
             position: 'absolute',
@@ -64,6 +53,87 @@ CardPreview = React.createClass({
         </div>
       );
     }
+
+    if(card.title_back) {
+      let x = () => {return {__html: this.props.card.title_back}};
+      this.title_back = (
+        <div
+          dangerouslySetInnerHTML={x()}
+          style={{
+            zIndex: 3,
+            position: 'absolute',
+            top: 10,
+            left: 25,
+            width: 750,
+            fontSize: 26,
+            fontFamily: 'Lato',
+          }}
+          >
+        </div>
+      );
+
+      if(card.text_back) {
+        let x = () => {return {__html: this.props.card.text_back}};
+        this.text_back = (
+          <div
+            dangerouslySetInnerHTML={x()}
+            style={{
+              zIndex: 3,
+              //position: 'absolute',
+              //top: 10,
+              //left: 25,
+              width: 320,
+              fontSize: 14,
+              fontFamily: 'Lato',
+              float: 'left',
+            }}
+            >
+          </div>
+        );
+      }
+
+      if(card.activity) {
+        let x = () => {return {__html: this.props.card.activity}};
+        this.activity = (
+          <div
+            dangerouslySetInnerHTML={x()}
+            style={{
+              zIndex: 3,
+              //position: 'absolute',
+              //top: 10,
+              //left: 25,
+              width: 320,
+              fontSize: 14,
+              fontFamily: 'Lato',
+              float: 'left',
+            }}
+            >
+          </div>
+        );
+      }
+
+
+      if(card.references) {
+        let x = () => {return {__html: this.props.card.references}};
+        this.references = (
+          <div
+            dangerouslySetInnerHTML={x()}
+            style={{
+              zIndex: 3,
+              //position: 'absolute',
+              //top: 10,
+              //left: 25,
+              width: 750,
+              fontSize: 14,
+              fontFamily: 'Lato',
+              float: 'left',
+            }}
+            >
+          </div>
+        );
+      }
+
+    };
   },
 
   shouldComponentUpdate(nextProps) {
@@ -80,10 +150,24 @@ CardPreview = React.createClass({
   render() {
     this.draw();
     return (
-      <div style={{position: 'relative'}} className='card-preview-container'>
-        {this.title}
-        {this.text_front}
-        <canvas id='c'></canvas>
+      <div>
+        <div style={{position: 'relative'}} className='card-preview-container'>
+          {this.title}
+          {this.text_front}
+          <canvas id='c'></canvas>
+        </div>
+
+        <div className="spacer" style={{height: 15}}></div>
+
+        <div style={{position: 'relative'}} className='card-preview-container'>
+          {this.title_back}
+          <div className="back-content" style={{zIndex: 4, position: 'absolute', top: 60, left: 25}}>
+            {this.text_back}
+            {this.activity}
+            {this.references}
+          </div>
+          <canvas id='c'></canvas>
+        </div>
       </div>
     )
   }

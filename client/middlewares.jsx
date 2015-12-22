@@ -15,4 +15,4 @@ function log() {
     console.log.apply(console, arguments);
   }
 }
-__debug_redux = true
+__debug_redux = false
