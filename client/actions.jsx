@@ -19,6 +19,7 @@ Actions = {
     return {
       type: 'CREATE_CARD',
       card: createdCard,
+      order: 'created_at', // for now, change the sort order to show the new card @ the top
     }
   },
 

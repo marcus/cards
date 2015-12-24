@@ -7,6 +7,9 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  *:focus {
+    outline: none !important;
+  }
 }
 #editor {
   min-height: 100px;
@@ -38,7 +41,26 @@ body {
   box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.53);
 }
 
+.card-container {
+  transition: all 500ms ease;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  /*float: left;*/
+  border: 1px solid #bbb;
+  margin: 10px;
+  min-height: 30px;
+  box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.3);
+  /*width: 30%;*/
+}
 .card-home {
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+  /*font-family: "Slabo", "Source Sans", sans;*/
+  /*width: 300px;*/
+
   .card-home-title {
     font-size: 1.3em;
     white-space: nowrap;

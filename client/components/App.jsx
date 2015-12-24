@@ -73,6 +73,7 @@ let App = React.createClass({
 function mapStateToProps(state) {
   return {
     cards: state.cards,
+    order: state.order,
     //selectedId: state.userInterface.selectedId,
   };
 }

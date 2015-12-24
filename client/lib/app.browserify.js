@@ -24,16 +24,8 @@ Nav = Bootstrap.Nav;
 NavItem = Bootstrap.NavItem;
 Navbar = Bootstrap.Navbar;
 NavbarBrand = Bootstrap.NavbarBrand;
-//fabric = require('fabric');
 
 ReactRedux = require("react-redux");
 Provider = ReactRedux.Provider;
 connect = ReactRedux.connect;
-
-//ReduxDevTools = require("redux-devtools");
-//ReactReduxDevTools = require("redux-devtools/lib/react");
-//DevTools = ReactReduxDevTools.DevTools;
-//DebugPanel = ReactReduxDevTools.DebugPanel;
-//LogMonitor = ReactReduxDevTools.LogMonitor;
-
-//MediumEditor = require('react-medium-editor'); // needs react 14
+cx = require('classnames');
