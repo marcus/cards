@@ -27,6 +27,12 @@ MagicMove = React.createClass({
   displayName: 'MagicMove',
   positions: {},
 
+  getInitialState () {
+    return {
+      animating: false
+    };
+  },
+
   componentDidMount () {
     this.makePortal();
     this.renderClonesInitially();
@@ -41,7 +47,7 @@ MagicMove = React.createClass({
   },
 
   componentDidUpdate (prevProps) {
-    if (this.animating)
+    if (this.animating || this.state.animating)
       this.renderClonesToNewPositions(prevProps);
   },
 
@@ -64,13 +70,14 @@ MagicMove = React.createClass({
   },
 
   startAnimation (nextProps) {
-    if (this.animating)
+    if (this.animating || this.state.animating)
       return;
     this.addTransitionEndEvent();
 
     this.positions = this.getPositions();
     this.renderClones(nextProps, () => {
       this.animating = true;
+      this.setState({ animating: true });
     });
   },
 
@@ -83,6 +90,7 @@ MagicMove = React.createClass({
     this.removeTransitionEndEvent();
     this.portalNode.style.position = 'absolute';
     this.animating = false;
+    this.setState({ animating: false });
   },
 
   getPositions () {
@@ -123,7 +131,7 @@ MagicMove = React.createClass({
   },
 
   render() {
-    var style = { opacity: (this.animating) ? 0 : 1 };
+    var style = { opacity: (this.animating || this.state.animating) ? 0 : 1 };
     return (
       <div style={style}>
         {this.childrenWithRefs()}
